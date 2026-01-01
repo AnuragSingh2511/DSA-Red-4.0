@@ -63,6 +63,32 @@ using namespace std;
     }
 
   }
+  //entire DFS logic resides inside the dfsHelper function
+  void dfshelper(int src, unordered_map<int, bool> &visited){
+    //jaise hi call aai , toh sbse pehle ans print kro
+    //visited true mark karo
+    cout << src << ", ";
+    visited[src] = true;
+    //ab current node se iske nbr ki taraf call marni hai
+    for(auto nbr: adjList[src]){
+        //agar nbr visited nahi hai
+        //toh uske liye DFS call karna hai
+        if(!visited[nbr]){
+            dfshelper(nbr, visited);
+        }
+    }
+  }
+  void dfsTraversal(int src , int n){
+    unordered_map<int,bool> visited;
+    //fn call for src node
+    //SUPER IMP LOOP..handles disconnected components 
+    for(int src=0; src< n; src++){
+        if(!visited[src]){
+             dfshelper(src, visited);
+        }
+    }
+    
+  }
 
 };
 
@@ -82,7 +108,9 @@ int main(){
     g.addEdge(7, 6, 1);
     
     g.printAdjacencyList();
-    g.bfsTraversal(0);
+    // g.bfsTraversal(0);
+    cout << "DFS: ";
+    g.dfsTraversal(0, 9);
 
     return 0;
 }
