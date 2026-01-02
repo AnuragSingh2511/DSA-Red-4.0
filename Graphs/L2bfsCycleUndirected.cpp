@@ -1,4 +1,4 @@
-//Cycle detection
+// Cycle detection
 
 /*
 Undirected graph - BFS and DFS
@@ -10,8 +10,7 @@ term instead of child)
 DFS - Recursion
 */
 
-//GFG - Undirected Graph Cycle
-
+// GFG - Undirected Graph Cycle
 
 #include <iostream>
 #include <unordered_map>
@@ -19,47 +18,57 @@ DFS - Recursion
 #include <queue>
 using namespace std;
 
-class Graph {
+class Graph
+{
 public:
     unordered_map<int, vector<int>> adjList;
 
     // direction = 0 → undirected
     // direction = 1 → directed
-    void addEdge(int u, int v, bool direction) {
-        if (direction == 1) {
+    void addEdge(int u, int v, bool direction)
+    {
+        if (direction == 1)
+        {
             adjList[u].push_back(v);
-        } else {
+        }
+        else
+        {
             adjList[u].push_back(v);
             adjList[v].push_back(u);
         }
     }
 };
 
-class Solution {
+class Solution
+{
 public:
     bool checkCycleUsingBFS(
         int src,
         unordered_map<int, vector<int>> &adjList,
         unordered_map<int, bool> &visited,
-        unordered_map<int, int> &parent
-    ) {
+        unordered_map<int, int> &parent)
+    {
         queue<int> q;
 
         q.push(src);
         visited[src] = true;
         parent[src] = -1;
 
-        while (!q.empty()) {
+        while (!q.empty())
+        {
             int currNode = q.front();
             q.pop();
 
-            for (auto nbr : adjList[currNode]) {
-                if (!visited[nbr]) {
+            for (auto nbr : adjList[currNode])
+            {
+                if (!visited[nbr])
+                {
                     visited[nbr] = true;
                     parent[nbr] = currNode;
                     q.push(nbr);
                 }
-                else if (nbr != parent[currNode]) {
+                else if (nbr != parent[currNode])
+                {
                     return true; // cycle found
                 }
             }
@@ -67,14 +76,18 @@ public:
         return false;
     }
 
-    bool isCycle(int V, unordered_map<int, vector<int>> &adjList) {
+    bool isCycle(int V, unordered_map<int, vector<int>> &adjList)
+    {
         unordered_map<int, bool> visited;
         unordered_map<int, int> parent;
 
         // handle disconnected components
-        for (int src = 0; src < V; src++) {
-            if (!visited[src]) {
-                if (checkCycleUsingBFS(src, adjList, visited, parent)) {
+        for (int src = 0; src < V; src++)
+        {
+            if (!visited[src])
+            {
+                if (checkCycleUsingBFS(src, adjList, visited, parent))
+                {
                     return true;
                 }
             }
@@ -83,7 +96,8 @@ public:
     }
 };
 
-int main() {
+int main()
+{
     Graph g;
 
     // Undirected graph (direction = 0)
