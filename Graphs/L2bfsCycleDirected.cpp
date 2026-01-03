@@ -33,9 +33,10 @@ public:
         // Initialize indegree of all nodes as 0
         // T.C: O(V)
         // S.C: O(V)
-        for (int i = 0; i < V; i++) {
-            indegree[i] = 0;
-        }
+
+        // for (int i = 0; i < V; i++) {
+        //     indegree[i] = 0;
+        // }      //code can run without this also
 
         // Calculate indegree
         // T.C: O(E)
