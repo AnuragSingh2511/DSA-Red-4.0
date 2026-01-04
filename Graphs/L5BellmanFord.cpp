@@ -6,8 +6,8 @@
 #include <limits.h>
 using namespace std;
 
-// T.C - O((V + E) log V)
-// S.C	- O(V + E)
+// T.C - O(V * E)
+// S.C - O(V + E)
 
 // Weighted graph
 class Graph
