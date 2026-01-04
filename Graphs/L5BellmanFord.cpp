@@ -85,6 +85,37 @@ public:
                 }
             }
         }
+        bool negativeCyclePresent = false;
+        
+        for (auto a : adjList)
+            {
+                for (auto b : a.second)
+                {
+                    // a -> pair< int, list<pair<int,int> > >
+                    // a.first -> u
+                    // a.second -> nbr of u node -> list<pair<int,int> >
+                    // b -> pair<int,int>
+                    // b.first -> v;
+                    // b.second -> weight
+                    int u = a.first;
+                    int v = b.first;
+                    int wt = b.second;
+                    if (dist[u] != INT_MAX && dist[u] + wt < dist[v])
+                    {
+                        dist[v] = dist[u] + wt;
+                        negativeCyclePresent = true;
+                        break;
+                    }
+                }
+            }
+
+            if(negativeCyclePresent == true){
+                cout << " -ve cycle present " << endl;
+            }
+            else{
+                cout << "-ve cycle not present" << endl;
+            }
+
         cout << "Printing bellman for result:" << endl;
 
         for (int i = 0; i < n; i++)
