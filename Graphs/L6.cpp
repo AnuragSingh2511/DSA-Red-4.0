@@ -22,6 +22,8 @@ public:
     // TC: O(N + E)  //N = number of courses
                      //E = number of prerequisites (edges)
     // SC: O(N + E)
+
+    //topoSortDfs also another way of doing it
     void topoSortBfs(int n, vector<int>& topoOrder, unordered_map<int, list<int>>& adjList) {
 
         queue<int> q;
