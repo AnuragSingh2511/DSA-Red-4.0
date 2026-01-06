@@ -52,7 +52,8 @@ int main()
         {0, 0, 1}
     };
 
-    Solution s;
+    Solution s; // Creating object of Solution class to call non-static methods using dot operator
+
     cout << "Number of Provinces: "
          << s.findCircleNum(isConnected) << endl;
 
