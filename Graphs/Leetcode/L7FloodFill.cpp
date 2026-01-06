@@ -76,7 +76,7 @@ int main()
     Solution s;
     vector<vector<int>> result = s.floodFill(image, sr, sc, color);
 
-    cout << "Flood Fill Result:\n";
+    cout << "Flood Fill Result" << endl;
     for (auto &row : result)
     {
         for (int val : row)
