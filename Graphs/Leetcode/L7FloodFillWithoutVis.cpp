@@ -6,18 +6,20 @@ using namespace std;
 // T.C - O(n * m)
 // S.C - O(n * m)
 
-//this can also be solved without using visited..another code file
+//without using visited solution
 
 class Solution {
 public:
-    bool isSafe(int newX, int newY,                
+    bool isSafe(int newX, int newY,
+                map<pair<int,int>, bool> &vis,
                 vector<vector<int>> &ans,
                 int oldColor)
     {
         if (newX >= 0 && newY >= 0 &&
             newX < ans.size() &&
             newY < ans[0].size() &&
-            ans[newX][newY] == oldColor)
+            ans[newX][newY] == oldColor &&
+            vis[{newX, newY}] == false)
         {
             return true;
         }
@@ -25,10 +27,11 @@ public:
     }
 
     void dfs(int sr, int sc,
-             int oldColor, int newColor,             
+             int oldColor, int newColor,
+             map<pair<int,int>, bool> &vis,
              vector<vector<int>> &ans)
     {
-        //vis[{sr, sc}] = true;
+        vis[{sr, sc}] = true;
         ans[sr][sc] = newColor;
 
         int dx[] = {-1, 0, 1, 0};
@@ -39,9 +42,9 @@ public:
             int newX = sr + dx[i];
             int newY = sc + dy[i];
 
-            if (isSafe(newX, newY, ans, oldColor))
+            if (isSafe(newX, newY, vis, ans, oldColor))
             {
-                dfs(newX, newY, oldColor, newColor, ans);
+                dfs(newX, newY, oldColor, newColor, vis, ans);
             }
         }
     }
@@ -55,8 +58,8 @@ public:
         if (oldColor == color)
             return ans;
 
-        // map<pair<int,int>, bool> vis;
-        dfs(sr, sc, oldColor, color, ans);
+        map<pair<int,int>, bool> vis;
+        dfs(sr, sc, oldColor, color, vis, ans);
 
         return ans;
     }
