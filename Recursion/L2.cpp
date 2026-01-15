@@ -22,6 +22,15 @@ void printArray(int arr[], int size, int index){
     printArray(arr, size, index+1);
 }
 
+/*
+Time Complexity (T.C): O(N)
+- The function is called once for each array element.
+
+Space Complexity (S.C): O(N)
+- Due to recursion call stack.
+- Maximum N recursive calls are present at one time.
+*/
+
 void reversePrint(int arr[], int size, int index){
    //base case
    if(index < 0){
@@ -37,22 +46,43 @@ void reversePrint(int arr[], int size, int index){
 
 /*
 Time Complexity (T.C): O(N)
-- The function is called once for each array element.
+- In worst case, we check every element once.
 
 Space Complexity (S.C): O(N)
 - Due to recursion call stack.
-- Maximum N recursive calls are present at one time.
 */
+
+bool searchArray(int arr[], int size, int index, int target){
+    // base case: element not found
+    if(index >= size){
+        return false;
+    }
+
+    // base case: element found
+    if(arr[index] == target){
+        return true;
+    }
+
+    // recursive call (IMPORTANT: return it)
+    return searchArray(arr, size, index + 1, target);
+}
 
 int main(){
 
    int arr[] = {10,20,30,40,50,60};
    int size = sizeof(arr)/sizeof(int);
-//    int index = 0;
-   int index = size-1;
+
+   int target = 60;
+   int index = 0;
+//    int index = size-1;
 
 //    printArray(arr, size, index);
-   reversePrint(arr, size, index);
+//    reversePrint(arr, size, index);
+
+// bool ans = searchArray(arr, size, index, target);
+// cout << ans;
+
+cout << (searchArray(arr, size, index, target)? "true" : "false"); //ternary operator
 
     return 0;
 }
