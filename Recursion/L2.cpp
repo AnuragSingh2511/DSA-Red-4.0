@@ -31,17 +31,30 @@ Space Complexity (S.C): O(N)
 - Maximum N recursive calls are present at one time.
 */
 
-void reversePrint(int arr[], int size, int index){
+// void reversePrint(int arr[], int size, int index){
+//    //base case
+//    if(index < 0){
+//     return;
+//    }
+
+//    //1 case
+//    cout << arr[index] << " ";
+
+//    //recursive call
+//    reversePrint(arr, size, index-1);
+// }
+
+void reversePrint(int arr[], int size){ //babbar solution
    //base case
-   if(index < 0){
+   if(size == 0){
     return;
    }
 
    //1 case
-   cout << arr[index] << " ";
+   cout << arr[size-1] << " ";
 
    //recursive call
-   reversePrint(arr, size, index-1);
+   reversePrint(arr, size-1);
 }
 
 /*
@@ -77,12 +90,13 @@ int main(){
 //    int index = size-1;
 
 //    printArray(arr, size, index);
+   reversePrint(arr, size);
 //    reversePrint(arr, size, index);
 
 // bool ans = searchArray(arr, size, index, target);
 // cout << ans;
 
-cout << (searchArray(arr, size, index, target)? "true" : "false"); //ternary operator
+// cout << (searchArray(arr, size, index, target)? "true" : "false"); //ternary operator
 
     return 0;
 }
