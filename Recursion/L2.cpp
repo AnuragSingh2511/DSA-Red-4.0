@@ -81,6 +81,15 @@ bool searchArray(int arr[], int size, int index, int target){
     return searchArray(arr, size, index + 1, target);
 }
 
+/*
+Time Complexity (T.C): O(N)
+- Each element of the array is visited exactly once.
+
+Space Complexity (S.C): O(N)
+- Due to recursion call stack.
+- No extra data structures are used.
+*/
+
 void getMinElement(int arr[], int size, int index, int &mini){
   // Base case or corner case
   if(index >= size){
@@ -94,6 +103,19 @@ void getMinElement(int arr[], int size, int index, int &mini){
  getMinElement(arr, size, index+1, mini);
 }
 
+void getMaxElement(int arr[], int size, int index, int &maxi){
+  // Base case or corner case
+  if(index >= size){
+    return;
+  }
+
+ //1 case
+ maxi = max(maxi, arr[index]);
+
+ //recursive call
+ getMaxElement(arr, size, index+1, maxi);
+}
+
 int main(){
 
    int arr[] = {10,20,30,40,50,60};
@@ -102,9 +124,13 @@ int main(){
    int target = 60;
    int index = 0;
    int mini = INT_MAX;
+   int maxi = INT_MIN;
 
    getMinElement(arr, size, index, mini);
    cout << "Min element is : " << mini << endl;
+
+   getMaxElement(arr, size, index, maxi);
+   cout << "Max element is : " << maxi << endl;
 //    int index = size-1;
 
 //    printArray(arr, size, index);
