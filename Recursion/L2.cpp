@@ -1,4 +1,5 @@
 #include<iostream>
+#include<limits.h>
 using namespace std;
 
 /*
@@ -80,6 +81,19 @@ bool searchArray(int arr[], int size, int index, int target){
     return searchArray(arr, size, index + 1, target);
 }
 
+void getMinElement(int arr[], int size, int index, int &mini){
+  // Base case or corner case
+  if(index >= size){
+    return;
+  }
+
+ //1 case
+ mini = min(mini, arr[index]);
+
+ //recursive call
+ getMinElement(arr, size, index+1, mini);
+}
+
 int main(){
 
    int arr[] = {10,20,30,40,50,60};
@@ -87,10 +101,14 @@ int main(){
 
    int target = 60;
    int index = 0;
+   int mini = INT_MAX;
+
+   getMinElement(arr, size, index, mini);
+   cout << "Min element is : " << mini << endl;
 //    int index = size-1;
 
 //    printArray(arr, size, index);
-   reversePrint(arr, size);
+//    reversePrint(arr, size);
 //    reversePrint(arr, size, index);
 
 // bool ans = searchArray(arr, size, index, target);
