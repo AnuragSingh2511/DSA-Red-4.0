@@ -1,6 +1,15 @@
 #include<iostream>
 using namespace std;
 
+/*
+Time Complexity (T.C): O(log N)
+- At each recursive call, the search space is reduced to half.
+
+Space Complexity (S.C): O(log N)
+- Due to recursion call stack.
+- Maximum depth of recursion is log N.
+*/
+
 int recursivebinarySearch(int arr[], int s, int e, int target){
  // base case
  if( s > e){
