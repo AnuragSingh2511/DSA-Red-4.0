@@ -116,21 +116,52 @@ void getMaxElement(int arr[], int size, int index, int &maxi){
  getMaxElement(arr, size, index+1, maxi);
 }
 
+void printOdd(int arr[], int size, int index){
+   //base case
+   if(index >= size){
+    return;
+   }
+
+   //1 case
+   if(arr[index] & 1){
+    cout << arr[index] << " ";
+   }
+
+   //recursive call
+   printOdd(arr, size, index+1);
+}
+
+void printEven(int arr[], int size, int index){
+   //base case
+   if(index >= size){
+    return;
+   }
+
+   //1 case
+   if(! (arr[index] & 1 )){
+    cout << arr[index] << " ";
+   }
+
+   //recursive call
+   printEven(arr, size, index+1);
+}
+
 int main(){
 
-   int arr[] = {10,20,30,40,50,60};
+//    int arr[] = {10,20,30,40,50,60};
+   int arr[] = {10,20,30,40,50,5};
    int size = sizeof(arr)/sizeof(int);
 
    int target = 60;
    int index = 0;
-   int mini = INT_MAX;
-   int maxi = INT_MIN;
+//    int mini = INT_MAX;
+//    int maxi = INT_MIN;
 
-   getMinElement(arr, size, index, mini);
-   cout << "Min element is : " << mini << endl;
+//    getMinElement(arr, size, index, mini);
+//    cout << "Min element is : " << mini << endl;
 
-   getMaxElement(arr, size, index, maxi);
-   cout << "Max element is : " << maxi << endl;
+//    getMaxElement(arr, size, index, maxi);
+//    cout << "Max element is : " << maxi << endl;
 //    int index = size-1;
 
 //    printArray(arr, size, index);
@@ -141,6 +172,9 @@ int main(){
 // cout << ans;
 
 // cout << (searchArray(arr, size, index, target)? "true" : "false"); //ternary operator
+printOdd(arr, size, index);
+cout << endl;
+printEven(arr, size, index);
 
     return 0;
 }
