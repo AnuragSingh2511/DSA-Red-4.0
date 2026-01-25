@@ -9,10 +9,9 @@ public:
     int peakIndexInMountainArray(vector<int>& arr) {
         int s = 0;
         int e = arr.size() - 1;
-        int ans = -1;
 
         // binary search
-        while(s <= e){
+        while(s < e){
             int mid = s + (e - s) / 2;
 
             if(arr[mid] < arr[mid + 1]){
@@ -20,12 +19,12 @@ public:
                 s = mid + 1;
             }
             else{
-                ans = mid;
-                e = mid - 1;
+                // peak is mid or on left side
+                e = mid;
             }
         }
-        
-        return ans;
+        // s == e -> peak index
+        return s;
     }
 };
 
