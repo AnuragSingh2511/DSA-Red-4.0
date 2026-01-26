@@ -19,6 +19,8 @@ int solveUsingRecusion(int n){
 }
 
 int main(){
+    // 0 1 1 2 3 5
+    // Oth number is 0....5th number is 5 so o/p must come 5
     int n = 5;
     cout << solveUsingRecusion(n);
 
