@@ -2,6 +2,8 @@
 #include<limits.h>
 using namespace std;
 
+// Recursion, backtracking and DP are programming technique
+
 /*
 Time Complexity (T.C): O(N)
 - Because the function visits each element of the array exactly once.
