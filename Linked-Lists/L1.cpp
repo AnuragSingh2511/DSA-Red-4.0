@@ -1,6 +1,12 @@
 #include<iostream>
 using namespace std;
 
+/*
+Singly Linked-List
+Doubly-Linked-List
+Circular-Linked-List
+*/
+
 class Node{
     public:
      int data;
