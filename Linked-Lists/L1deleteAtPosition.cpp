@@ -67,7 +67,7 @@ int lengthLinkedList(Node* head){
     return len;
 }
 
-void insertAtPosition(int position, int value, Node* &head, Node* &tail){  //O(n) , O(1)
+void insertAtPosition(int position, int value, Node* &head, Node* &tail){
   //assuming given position will be inside bounds and not invalid
 
   //checking out of bound position
@@ -80,9 +80,7 @@ void insertAtPosition(int position, int value, Node* &head, Node* &tail){  //O(n
   if(position == 1){
     insertAtHead(value, head, tail);
     return;
-  }
-
-  
+  }  
 
   if(position == len + 1){
     insertAtTail(value, head, tail);
@@ -103,6 +101,48 @@ void insertAtPosition(int position, int value, Node* &head, Node* &tail){  //O(n
   }
 }
 
+void deleteAtPosition(int position, Node* &head, Node* &tail){
+  //invalid cases
+  //empty LL
+  if(head == NULL && tail == NULL){
+    return;
+  }
+
+  //pos = 1 and Ll single node
+  if(head == tail && position == 1){
+    Node* temp = head;
+    head = NULL;
+    tail = NULL;
+    delete temp;
+    return;
+  }
+
+  //multiple nodes but pos=1
+  if(position == 1){
+    Node* temp = head;
+    head = head -> next;
+    temp->next = NULL;
+    delete temp;
+    return;
+  }
+  else{
+    // either you are deleting from middle node or the last node
+    // step 1: setup current/previous/forward
+    Node* previous = head;
+    for(int i = 0; i <= position - 2; i++){
+        previous = previous->next;
+    }
+    Node* current = previous->next;
+    Node* forward = current->next;
+    //Homework do it via 2 pointers only
+
+    //update links
+    current->next = NULL;
+    previous->next = forward;
+    //current is isolated now
+    delete current;
+  }
+}
 
 int main(){
    
@@ -117,8 +157,10 @@ int main(){
     printLinkedList(head);
 
     insertAtPosition(2, 200, head, tail);
+    printLinkedList(head);  
+
+    deleteAtPosition(1, head, tail);
     printLinkedList(head);
-    
     
 
     return 0;
