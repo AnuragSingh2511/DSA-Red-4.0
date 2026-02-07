@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+//optimal
 // T.C - O(N^2)
 // S.C - O(1)
 
