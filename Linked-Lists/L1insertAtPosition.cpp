@@ -93,7 +93,7 @@ void insertAtPosition(int position, int value, Node* &head, Node* &tail){
     Node* newNode = new Node(value);
     //step 2: temp ko pos - 1 reach karwao
     Node* temp = head;
-    for(int i = 0; i <= position - 1; i++){
+    for(int i = 0; i <= position - 2; i++){
         temp = temp -> next;
     }
     //step 3: newNode ko link with aage ka node
@@ -116,7 +116,7 @@ int main(){
     insertAtTail(40, head, tail);
     printLinkedList(head);
 
-    insertAtPosition(2, 20, head, tail);
+    insertAtPosition(2, 200, head, tail);
     printLinkedList(head);
     
     
